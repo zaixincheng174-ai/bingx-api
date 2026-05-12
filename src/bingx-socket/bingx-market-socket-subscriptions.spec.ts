@@ -42,16 +42,16 @@ describe('bingx market socket subscriptions', () => {
     wss.once('connection', (socket) => {
       socket.once('message', (message) => {
         expect(JSON.parse(message.toString())).toStrictEqual({
-          id: 'listen-for-BTC-USDT@depth5@500ms',
+          id: 'listen-for-BTC-USDT@depth5',
           reqType: 'sub',
-          dataType: 'BTC-USDT@depth5@500ms',
+          dataType: 'BTC-USDT@depth5',
         });
 
         sendToSocket(
           socket,
           JSON.stringify({
             code: 0,
-            dataType: 'BTC-USDT@depth5@500ms',
+            dataType: 'BTC-USDT@depth5',
             data: {
               asks: [{ p: 30100.1, v: 2.5 }],
               bids: [{ p: 30099.9, v: 1.25 }],
@@ -65,7 +65,7 @@ describe('bingx market socket subscriptions', () => {
     stream.marketDepth$.subscribe((event) => {
       expect(event).toStrictEqual({
         code: '0',
-        dataType: 'BTC-USDT@depth5@500ms',
+        dataType: 'BTC-USDT@depth5',
         data: {
           asks: [{ p: '30100.1', v: '2.5' }],
           bids: [{ p: '30099.9', v: '1.25' }],
@@ -74,7 +74,7 @@ describe('bingx market socket subscriptions', () => {
       done();
     });
 
-    stream.subscribeMarketDepth('BTC-USDT', 5, '500ms');
+    stream.subscribeMarketDepth('BTC-USDT', 5);
   });
 
   it('subscribes to kline and emits kline events', (done) => {

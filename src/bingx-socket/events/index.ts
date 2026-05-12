@@ -9,7 +9,6 @@ export {
   MarketDepthData,
   MarketDepthEntry,
   MarketDepthLevel,
-  MarketDepthInterval,
   KlineDataType,
   KlineEvent,
   KlineData,

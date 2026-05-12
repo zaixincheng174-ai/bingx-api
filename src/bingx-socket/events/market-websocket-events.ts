@@ -17,9 +17,7 @@ export type Volume = string | number;
 
 export type TradeDataType = `${TradingPair}@trade`;
 export type MarketDepthLevel = 5 | 10 | 20 | 50 | 100;
-export type MarketDepthInterval = '100ms' | '200ms' | '500ms' | '1000ms';
-export type MarketDepthDataType =
-  `${TradingPair}@depth${MarketDepthLevel}@${MarketDepthInterval}`;
+export type MarketDepthDataType = `${TradingPair}@depth${MarketDepthLevel}`;
 export type KlineInterval =
   | '1m'
   | '3m'

@@ -19,7 +19,6 @@ import {
   LatestTradeEvent,
   MarkerSubscription,
   MarketDepthEvent,
-  MarketDepthInterval,
   MarketDepthLevel,
   MarketWebsocketEvents,
   SubscriptionType,
@@ -112,10 +111,9 @@ export class BingxMarketSocketStream {
 
   public subscribeMarketDepth(
     symbol: TradingPair,
-    level: MarketDepthLevel,
-    interval: MarketDepthInterval,
+    level: MarketDepthLevel = 20,
   ) {
-    this.subscribe(`${symbol}@depth${level}@${interval}`);
+    this.subscribe(`${symbol}@depth${level}`);
   }
 
   public subscribeKline(symbol: TradingPair, interval: KlineInterval) {
